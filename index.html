@@ -16,9 +16,9 @@
             --primary: #3b82f6;
             --primary-hover: #2563eb;
             --accent: #8b5cf6;
+            --whatsapp: #25D366;
             --bg-dark: #0a0a0a;
             --bg-card: #141414;
-            --bg-card-hover: #1a1a1a;
             --border: #262626;
             --text-primary: #ffffff;
             --text-secondary: #a1a1aa;
@@ -196,7 +196,7 @@
 
         .hero-visual {
             position: relative;
-            height: 500px;
+            height: 450px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -243,10 +243,7 @@
             line-height: 1.8;
         }
 
-        .code-line {
-            color: var(--text-muted);
-        }
-
+        .code-line { color: var(--text-muted); }
         .code-line .tag { color: var(--primary); }
         .code-line .attr { color: var(--accent); }
         .code-line .value { color: #10b981; }
@@ -327,86 +324,52 @@
             line-height: 1.7;
         }
 
-        /* Portfólio */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .portfolio-item {
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            transition: all 0.3s;
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .portfolio-image {
-            height: 280px;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-weight: 600;
-            font-size: 1.1rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .portfolio-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
-        }
-
-        .portfolio-content {
-            padding: 1.5rem;
-        }
-
-        .portfolio-content h3 {
-            font-size: 1.125rem;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
-
-        .portfolio-content p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .portfolio-tag {
-            display: inline-block;
-            background: var(--bg-card);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            color: var(--primary);
-            margin-top: 1rem;
-            font-weight: 500;
-            border: 1px solid var(--border);
-        }
-
-        /* Diferenciais */
-        .features {
+        /* Seção de Estatísticas / Impacto */
+        .impact-section {
             background: var(--bg-card);
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
         }
 
+        .impact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .impact-stat {
+            font-size: 6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 1rem;
+            letter-spacing: -3px;
+        }
+
+        .impact-text h3 {
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .impact-text p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .impact-text strong {
+            color: var(--text-primary);
+        }
+
+        /* Diferenciais */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -466,6 +429,7 @@
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
+            margin-bottom: 2.5rem;
         }
 
         .contact-item {
@@ -495,6 +459,61 @@
 
         .contact-item small {
             color: var(--text-secondary);
+        }
+
+        /* Área do WhatsApp */
+        .whatsapp-area {
+            background: linear-gradient(135deg, rgba(37, 211, 102, 0.1), rgba(37, 211, 102, 0.05));
+            border: 1px solid rgba(37, 211, 102, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-area:hover {
+            border-color: var(--whatsapp);
+            background: linear-gradient(135deg, rgba(37, 211, 102, 0.15), rgba(37, 211, 102, 0.08));
+        }
+
+        .whatsapp-icon-large {
+            width: 60px;
+            height: 60px;
+            background: var(--whatsapp);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .whatsapp-content h4 {
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .whatsapp-content p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        .btn-whatsapp {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--whatsapp);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: opacity 0.3s;
+        }
+
+        .btn-whatsapp:hover {
+            opacity: 0.8;
         }
 
         .contact-form {
@@ -553,78 +572,37 @@
 
         /* Responsivo */
         @media (max-width: 968px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu {
-                display: flex;
-            }
-
+            .nav-links { display: none; }
+            .mobile-menu { display: flex; }
+            
             .hero {
                 grid-template-columns: 1fr;
                 gap: 3rem;
                 padding: 6rem 2rem 4rem;
             }
-
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .services-grid,
-            .portfolio-grid {
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-visual { height: 350px; }
+            
+            .services-grid { grid-template-columns: 1fr; }
+            
+            .impact-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
             }
-
-            .features-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .contact-wrapper {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-visual {
-                height: 400px;
-            }
+            .impact-stat { font-size: 5rem; }
+            
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .contact-wrapper { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 640px) {
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            section {
-                padding: 4rem 1.5rem;
-            }
-
-            .section-header h2 {
-                font-size: 2rem;
-            }
-        }
-
-        /* Animações */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate {
-            animation: fadeInUp 0.6s ease forwards;
+            .hero-content h1 { font-size: 2rem; }
+            .hero-buttons { flex-direction: column; }
+            .features-grid { grid-template-columns: 1fr; }
+            section { padding: 4rem 1.5rem; }
+            .section-header h2 { font-size: 2rem; }
+            .whatsapp-area { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
@@ -636,7 +614,7 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#servicos">Serviços</a></li>
-                <li><a href="#portfolio">Portfólio</a></li>
+                <li><a href="#impacto">Impacto</a></li>
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#contato" class="nav-cta">Orçamento</a></li>
             </ul>
@@ -655,7 +633,7 @@
             <p>Especialista em criar sites profissionais para restaurantes, clínicas, lojas e empresas que querem se destacar no digital e atrair mais clientes.</p>
             <div class="hero-buttons">
                 <a href="#contato" class="btn-primary">Solicitar Orçamento</a>
-                <a href="#portfolio" class="btn-secondary">Ver Projetos</a>
+                <a href="#servicos" class="btn-secondary">Nossos Serviços</a>
             </div>
         </div>
         <div class="hero-visual">
@@ -667,10 +645,10 @@
                     <div class="code-dot"></div>
                 </div>
                 <div class="code-content">
-                    <div class="code-line"><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="value">"website"</span><span class="tag">&gt;</span></div>
-                    <div class="code-line">&nbsp;&nbsp;<span class="tag">&lt;h1&gt;</span>Seu Negócio<span class="tag">&lt;/h1&gt;</span></div>
-                    <div class="code-line">&nbsp;&nbsp;<span class="tag">&lt;p&gt;</span>Profissional<span class="tag">&lt;/p&gt;</span></div>
-                    <div class="code-line">&nbsp;&nbsp;<span class="tag">&lt;button&gt;</span>Converter<span class="tag">&lt;/button&gt;</span></div>
+                    <div class="code-line"><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="value">"seu-negocio"</span><span class="tag">&gt;</span></div>
+                    <div class="code-line">&nbsp;&nbsp;<span class="tag">&lt;h1&gt;</span>Sua Marca<span class="tag">&lt;/h1&gt;</span></div>
+                    <div class="code-line">&nbsp;&nbsp;<span class="tag">&lt;p&gt;</span>Identidade Única<span class="tag">&lt;/p&gt;</span></div>
+                    <div class="code-line">&nbsp;&nbsp;<span class="tag">&lt;button&gt;</span>Atrair Clientes<span class="tag">&lt;/button&gt;</span></div>
                     <div class="code-line"><span class="tag">&lt;/div&gt;</span></div>
                 </div>
             </div>
@@ -681,92 +659,52 @@
     <section id="servicos">
         <div class="container">
             <div class="section-header">
-                <h2>Soluções Completas</h2>
-                <p>Tudo que seu negócio precisa para ter presença digital profissional e resultados reais</p>
+                <h2>O que fazemos</h2>
+                <p>Soluções focadas em estabelecer a presença digital do seu estabelecimento</p>
             </div>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">🎨</div>
-                    <h3>Design Exclusivo</h3>
-                    <p>Cada projeto é único e desenvolvido sob medida para o seu negócio, refletindo sua identidade e valores.</p>
+                    <h3>A Cara do Seu Comércio</h3>
+                    <p>Seu site vai ter a identidade visual exata do seu estabelecimento. Cores, estilo e tom de voz que refletem a sua marca.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">📱</div>
                     <h3>Totalmente Responsivo</h3>
-                    <p>Seu site perfeito em qualquer dispositivo: desktop, tablet ou smartphone. Experiência otimizada para todos.</p>
+                    <p>Seu site perfeito em qualquer dispositivo. A maioria dos seus clientes vai te encontrar pelo celular, e estaremos prontos.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">⚡</div>
-                    <h3>Alta Performance</h3>
-                    <p>Sites rápidos, otimizados para SEO e prontos para converter visitantes em clientes.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"></div>
-                    <h3>E-commerce</h3>
-                    <p>Lojas virtuais completas e seguras para você vender mais, 24 horas por dia.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🔧</div>
-                    <h3>Manutenção</h3>
-                    <p>Suporte contínuo e atualizações para manter seu site sempre atualizado e seguro.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">📊</div>
-                    <h3>Analytics</h3>
-                    <p>Acompanhamento de resultados e métricas para você entender o desempenho do seu site.</p>
+                    <div class="service-icon">🎯</div>
+                    <h3>Foco em Conversão</h3>
+                    <p>Layouts estratégicos pensados para transformar visitantes em clientes reais, com botões de ação e informações claras.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfólio -->
-    <section id="portfolio" style="background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <!-- Seção de Impacto / Estatística -->
+    <section class="impact-section" id="impacto">
         <div class="container">
-            <div class="section-header">
-                <h2>Projetos Recentes</h2>
-                <p>Conheça alguns dos negócios que já transformamos com presença digital profissional</p>
-            </div>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <div class="portfolio-image">
-                        [Imagem do Projeto]
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Nome do Projeto</h3>
-                        <p>Descrição breve do projeto e resultados alcançados</p>
-                        <span class="portfolio-tag">Categoria</span>
-                    </div>
+            <div class="impact-grid">
+                <div>
+                    <div class="impact-stat">97%</div>
+                    <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.6;">dos consumidores pesquisam na internet antes de visitar um estabelecimento local.</p>
                 </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-image">
-                        [Imagem do Projeto]
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Nome do Projeto</h3>
-                        <p>Descrição breve do projeto e resultados alcançados</p>
-                        <span class="portfolio-tag">Categoria</span>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-image">
-                        [Imagem do Projeto]
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Nome do Projeto</h3>
-                        <p>Descrição breve do projeto e resultados alcançados</p>
-                        <span class="portfolio-tag">Categoria</span>
-                    </div>
+                <div class="impact-text">
+                    <h3>Seja visto por quem está procurando o seu serviço</h3>
+                    <p>Estabelecimentos com um site profissional são <strong>muito mais vistos e escolhidos</strong> pela concorrência que não possui presença digital.</p>
+                    <p>Não basta apenas estar na internet. <strong>O site vai ter a cara do seu comércio</strong>, transmitindo a confiança e o profissionalismo que o seu cliente espera antes mesmo de pisar na sua porta.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Diferenciais -->
-    <section class="features" id="sobre">
+    <section id="sobre">
         <div class="container">
             <div class="section-header">
-                <h2>Por que escolher a Goss Designer?</h2>
-                <p>Compromisso com qualidade e resultados em cada projeto</p>
+                <h2>Por que a Goss Designer?</h2>
+                <p>Compromisso com a qualidade e com o crescimento do seu negócio</p>
             </div>
             <div class="features-grid">
                 <div class="feature-item">
@@ -785,9 +723,9 @@
                     <p>Atendimento personalizado</p>
                 </div>
                 <div class="feature-item">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Foco em Resultados</h3>
-                    <p>Sites que convertem</p>
+                    <div class="feature-icon"></div>
+                    <h3>Parceria Real</h3>
+                    <p>Seu sucesso é o nosso</p>
                 </div>
             </div>
         </div>
@@ -803,30 +741,33 @@
                     
                     <div class="contact-details">
                         <div class="contact-item">
-                            <div class="contact-icon"></div>
+                            <div class="contact-icon">📧</div>
                             <div>
                                 <strong>Email</strong>
-                                <small>seu@email.com</small>
+                                <small>contato@gossdesigner.com</small>
                             </div>
                         </div>
                         <div class="contact-item">
-                            <div class="contact-icon">📱</div>
-                            <div>
-                                <strong>WhatsApp</strong>
-                                <small>(00) 00000-0000</small>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon"></div>
+                            <div class="contact-icon">🕐</div>
                             <div>
                                 <strong>Atendimento</strong>
                                 <small>Seg - Sex: 9h às 18h</small>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Área do WhatsApp (Não funcional) -->
+                    <div class="whatsapp-area">
+                        <div class="whatsapp-icon-large">💬</div>
+                        <div class="whatsapp-content">
+                            <h4>Fale diretamente pelo WhatsApp</h4>
+                            <p>Resposta rápida para tirar suas dúvidas.</p>
+                            <a href="javascript:void(0)" class="btn-whatsapp" onclick="alert('Funcionalidade de WhatsApp em breve!')">Iniciar conversa →</a>
+                        </div>
+                    </div>
                 </div>
 
-                <form class="contact-form">
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Formulário em desenvolvimento!');">
                     <div class="form-group">
                         <label for="nome">Nome completo</label>
                         <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
@@ -841,7 +782,7 @@
                     </div>
                     <div class="form-group">
                         <label for="mensagem">Mensagem</label>
-                        <textarea id="mensagem" name="mensagem" placeholder="Conte-nos sobre seu projeto..." required></textarea>
+                        <textarea id="mensagem" name="mensagem" placeholder="Conte-nos sobre seu estabelecimento..." required></textarea>
                     </div>
                     <button type="submit" class="btn-primary" style="width: 100%;">Enviar Mensagem</button>
                 </form>
@@ -859,28 +800,38 @@
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
             navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            if(navLinks.style.display === 'flex') {
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '70px';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.background = 'var(--bg-dark)';
+                navLinks.style.padding = '2rem';
+                navLinks.style.borderBottom = '1px solid var(--border)';
+            }
         }
 
         // Scroll suave
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                const href = this.getAttribute('href');
+                if (href !== '#' && href !== 'javascript:void(0)') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        // Fecha o menu mobile se estiver aberto
+                        if(window.innerWidth <= 968) {
+                            document.querySelector('.nav-links').style.display = 'none';
+                        }
+                    }
                 }
             });
         });
 
         // Animação ao scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
         const observer = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -890,8 +841,7 @@
             });
         }, observerOptions);
 
-        // Observar elementos
-        document.querySelectorAll('.service-card, .portfolio-item, .feature-item').forEach(el => {
+        document.querySelectorAll('.service-card, .feature-item, .impact-text, .impact-stat').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
