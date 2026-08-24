@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Goss Designer | Websites Profissionais para seu Negócio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Goss Designer | Websites Profissionais</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,20 +13,22 @@
         }
 
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #0f172a;
-            --accent: #06b6d4;
-            --text: #334155;
-            --text-light: #64748b;
-            --bg: #ffffff;
-            --bg-light: #f8fafc;
-            --border: #e2e8f0;
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --accent: #8b5cf6;
+            --bg-dark: #0a0a0a;
+            --bg-card: #141414;
+            --bg-card-hover: #1a1a1a;
+            --border: #262626;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            color: var(--text);
+            background: var(--bg-dark);
+            color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
         }
@@ -36,8 +38,8 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
             z-index: 1000;
             padding: 1.2rem 0;
@@ -54,13 +56,17 @@
 
         .logo {
             font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--secondary);
+            font-weight: 800;
+            color: var(--text-primary);
             text-decoration: none;
+            letter-spacing: -0.5px;
         }
 
         .logo span {
-            color: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .nav-links {
@@ -71,26 +77,28 @@
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text);
+            color: var(--text-secondary);
             font-weight: 500;
             transition: color 0.3s;
             font-size: 0.95rem;
         }
 
         .nav-links a:hover {
-            color: var(--primary);
+            color: var(--text-primary);
         }
 
         .nav-cta {
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             color: white !important;
             padding: 0.6rem 1.5rem;
             border-radius: 8px;
-            transition: background 0.3s !important;
+            transition: all 0.3s !important;
+            font-weight: 600;
         }
 
         .nav-cta:hover {
-            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
         }
 
         .mobile-menu {
@@ -103,14 +111,14 @@
         .mobile-menu span {
             width: 25px;
             height: 2px;
-            background: var(--secondary);
+            background: var(--text-primary);
             transition: 0.3s;
         }
 
         /* Hero Section */
         .hero {
             margin-top: 80px;
-            padding: 6rem 2rem;
+            padding: 8rem 2rem 6rem;
             max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
@@ -121,20 +129,24 @@
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: var(--secondary);
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--text-primary);
             line-height: 1.1;
             margin-bottom: 1.5rem;
+            letter-spacing: -2px;
         }
 
         .hero-content h1 span {
-            color: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero-content p {
             font-size: 1.25rem;
-            color: var(--text-light);
+            color: var(--text-secondary);
             margin-bottom: 2.5rem;
             line-height: 1.7;
         }
@@ -145,7 +157,7 @@
         }
 
         .btn-primary {
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             color: white;
             padding: 1rem 2.5rem;
             border-radius: 10px;
@@ -159,72 +171,85 @@
         }
 
         .btn-primary:hover {
-            background: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
         }
 
         .btn-secondary {
             background: transparent;
-            color: var(--text);
+            color: var(--text-primary);
             padding: 1rem 2.5rem;
             border-radius: 10px;
             text-decoration: none;
             font-weight: 600;
             display: inline-block;
             transition: all 0.3s;
-            border: 2px solid var(--border);
+            border: 1px solid var(--border);
             cursor: pointer;
             font-size: 1rem;
         }
 
         .btn-secondary:hover {
             border-color: var(--primary);
-            color: var(--primary);
+            background: var(--bg-card);
         }
 
-        .hero-image {
+        .hero-visual {
             position: relative;
-        }
-
-        .hero-image-placeholder {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 20px;
-            padding: 3rem;
-            color: white;
+            height: 500px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
-            font-weight: 600;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-            min-height: 400px;
         }
 
-        .floating-card {
+        .hero-visual-bg {
             position: absolute;
-            background: white;
-            padding: 1.5rem;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .code-window {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         }
 
-        .card-1 {
-            bottom: -20px;
-            left: -30px;
-            animation: float 3s ease-in-out infinite;
+        .code-header {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 1.5rem;
         }
 
-        .card-2 {
-            top: 30px;
-            right: -20px;
-            animation: float 3s ease-in-out infinite 1.5s;
+        .code-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+        .code-dot:nth-child(1) { background: #ef4444; }
+        .code-dot:nth-child(2) { background: #f59e0b; }
+        .code-dot:nth-child(3) { background: #10b981; }
+
+        .code-content {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.8;
         }
+
+        .code-line {
+            color: var(--text-muted);
+        }
+
+        .code-line .tag { color: var(--primary); }
+        .code-line .attr { color: var(--accent); }
+        .code-line .value { color: #10b981; }
 
         /* Seções Gerais */
         section {
@@ -243,23 +268,20 @@
 
         .section-header h2 {
             font-size: 2.5rem;
-            color: var(--secondary);
+            color: var(--text-primary);
             margin-bottom: 1rem;
-            font-weight: 700;
+            font-weight: 800;
+            letter-spacing: -1px;
         }
 
         .section-header p {
             font-size: 1.125rem;
-            color: var(--text-light);
+            color: var(--text-secondary);
             max-width: 600px;
             margin: 0 auto;
         }
 
         /* Serviços */
-        .services {
-            background: var(--bg-light);
-        }
-
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -267,7 +289,7 @@
         }
 
         .service-card {
-            background: white;
+            background: var(--bg-card);
             padding: 2.5rem;
             border-radius: 16px;
             border: 1px solid var(--border);
@@ -276,8 +298,8 @@
 
         .service-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
             border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1);
         }
 
         .service-icon {
@@ -295,12 +317,13 @@
 
         .service-card h3 {
             font-size: 1.25rem;
-            color: var(--secondary);
+            color: var(--text-primary);
             margin-bottom: 1rem;
+            font-weight: 700;
         }
 
         .service-card p {
-            color: var(--text-light);
+            color: var(--text-secondary);
             line-height: 1.7;
         }
 
@@ -315,26 +338,38 @@
             position: relative;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s;
-            background: white;
+            background: var(--bg-card);
             border: 1px solid var(--border);
+            transition: all 0.3s;
         }
 
         .portfolio-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         .portfolio-image {
             height: 280px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: var(--text-muted);
             font-weight: 600;
             font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
         }
 
         .portfolio-content {
@@ -343,35 +378,33 @@
 
         .portfolio-content h3 {
             font-size: 1.125rem;
-            color: var(--secondary);
+            color: var(--text-primary);
             margin-bottom: 0.5rem;
+            font-weight: 700;
         }
 
         .portfolio-content p {
-            color: var(--text-light);
+            color: var(--text-secondary);
             font-size: 0.9rem;
         }
 
         .portfolio-tag {
             display: inline-block;
-            background: var(--bg-light);
+            background: var(--bg-card);
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
             font-size: 0.8rem;
             color: var(--primary);
             margin-top: 1rem;
             font-weight: 500;
+            border: 1px solid var(--border);
         }
 
         /* Diferenciais */
         .features {
-            background: var(--secondary);
-            color: white;
-        }
-
-        .features .section-header h2,
-        .features .section-header p {
-            color: white;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
 
         .features-grid {
@@ -385,21 +418,27 @@
             padding: 2rem;
         }
 
-        .feature-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--accent);
-            display: block;
-            margin-bottom: 0.5rem;
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
         }
 
         .feature-item h3 {
             font-size: 1.125rem;
+            color: var(--text-primary);
             margin-bottom: 0.5rem;
+            font-weight: 700;
         }
 
         .feature-item p {
-            color: #94a3b8;
+            color: var(--text-secondary);
             font-size: 0.9rem;
         }
 
@@ -412,12 +451,13 @@
 
         .contact-info h3 {
             font-size: 1.75rem;
-            color: var(--secondary);
+            color: var(--text-primary);
             margin-bottom: 1.5rem;
+            font-weight: 800;
         }
 
         .contact-info p {
-            color: var(--text-light);
+            color: var(--text-secondary);
             margin-bottom: 2rem;
             line-height: 1.7;
         }
@@ -437,19 +477,31 @@
         .contact-icon {
             width: 50px;
             height: 50px;
-            background: var(--bg-light);
+            background: var(--bg-card);
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--primary);
             font-size: 1.25rem;
+            border: 1px solid var(--border);
+        }
+
+        .contact-item strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-item small {
+            color: var(--text-secondary);
         }
 
         .contact-form {
-            background: var(--bg-light);
+            background: var(--bg-card);
             padding: 2.5rem;
             border-radius: 16px;
+            border: 1px solid var(--border);
         }
 
         .form-group {
@@ -459,7 +511,7 @@
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            color: var(--secondary);
+            color: var(--text-primary);
             font-weight: 500;
         }
 
@@ -467,10 +519,12 @@
         .form-group textarea {
             width: 100%;
             padding: 0.9rem 1rem;
+            background: var(--bg-dark);
             border: 1px solid var(--border);
             border-radius: 8px;
             font-family: inherit;
             font-size: 1rem;
+            color: var(--text-primary);
             transition: border-color 0.3s;
         }
 
@@ -487,14 +541,14 @@
 
         /* Footer */
         footer {
-            background: var(--secondary);
-            color: white;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
             padding: 3rem 2rem 2rem;
             text-align: center;
         }
 
         footer p {
-            color: #94a3b8;
+            color: var(--text-muted);
         }
 
         /* Responsivo */
@@ -510,6 +564,7 @@
             .hero {
                 grid-template-columns: 1fr;
                 gap: 3rem;
+                padding: 6rem 2rem 4rem;
             }
 
             .hero-content h1 {
@@ -527,6 +582,10 @@
 
             .contact-wrapper {
                 grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                height: 400px;
             }
         }
 
@@ -546,6 +605,26 @@
             section {
                 padding: 4rem 1.5rem;
             }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeInUp 0.6s ease forwards;
         }
     </style>
 </head>
@@ -579,23 +658,27 @@
                 <a href="#portfolio" class="btn-secondary">Ver Projetos</a>
             </div>
         </div>
-        <div class="hero-image">
-            <div class="hero-image-placeholder">
-                [Imagem Profissional]
-            </div>
-            <div class="floating-card card-1">
-                <strong>+50</strong><br>
-                <small>Projetos Entregues</small>
-            </div>
-            <div class="floating-card card-2">
-                <strong>100%</strong><br>
-                <small>Clientes Satisfeitos</small>
+        <div class="hero-visual">
+            <div class="hero-visual-bg"></div>
+            <div class="code-window">
+                <div class="code-header">
+                    <div class="code-dot"></div>
+                    <div class="code-dot"></div>
+                    <div class="code-dot"></div>
+                </div>
+                <div class="code-content">
+                    <div class="code-line"><span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="value">"website"</span><span class="tag">&gt;</span></div>
+                    <div class="code-line">&nbsp;&nbsp;<span class="tag">&lt;h1&gt;</span>Seu Negócio<span class="tag">&lt;/h1&gt;</span></div>
+                    <div class="code-line">&nbsp;&nbsp;<span class="tag">&lt;p&gt;</span>Profissional<span class="tag">&lt;/p&gt;</span></div>
+                    <div class="code-line">&nbsp;&nbsp;<span class="tag">&lt;button&gt;</span>Converter<span class="tag">&lt;/button&gt;</span></div>
+                    <div class="code-line"><span class="tag">&lt;/div&gt;</span></div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Serviços -->
-    <section class="services" id="servicos">
+    <section id="servicos">
         <div class="container">
             <div class="section-header">
                 <h2>Soluções Completas</h2>
@@ -613,12 +696,12 @@
                     <p>Seu site perfeito em qualquer dispositivo: desktop, tablet ou smartphone. Experiência otimizada para todos.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon"></div>
+                    <div class="service-icon">⚡</div>
                     <h3>Alta Performance</h3>
                     <p>Sites rápidos, otimizados para SEO e prontos para converter visitantes em clientes.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🛒</div>
+                    <div class="service-icon"></div>
                     <h3>E-commerce</h3>
                     <p>Lojas virtuais completas e seguras para você vender mais, 24 horas por dia.</p>
                 </div>
@@ -637,7 +720,7 @@
     </section>
 
     <!-- Portfólio -->
-    <section class="portfolio" id="portfolio">
+    <section id="portfolio" style="background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
         <div class="container">
             <div class="section-header">
                 <h2>Projetos Recentes</h2>
@@ -645,33 +728,33 @@
             </div>
             <div class="portfolio-grid">
                 <div class="portfolio-item">
-                    <div class="portfolio-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                        Restaurante Sabor & Arte
+                    <div class="portfolio-image">
+                        [Imagem do Projeto]
                     </div>
                     <div class="portfolio-content">
-                        <h3>Restaurante Sabor & Arte</h3>
-                        <p>Site institucional com cardápio digital e sistema de reservas</p>
-                        <span class="portfolio-tag">Restaurante</span>
+                        <h3>Nome do Projeto</h3>
+                        <p>Descrição breve do projeto e resultados alcançados</p>
+                        <span class="portfolio-tag">Categoria</span>
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <div class="portfolio-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                        Clínica Vida Saudável
+                    <div class="portfolio-image">
+                        [Imagem do Projeto]
                     </div>
                     <div class="portfolio-content">
-                        <h3>Clínica Vida Saudável</h3>
-                        <p>Portal completo com agendamento online e área do paciente</p>
-                        <span class="portfolio-tag">Saúde</span>
+                        <h3>Nome do Projeto</h3>
+                        <p>Descrição breve do projeto e resultados alcançados</p>
+                        <span class="portfolio-tag">Categoria</span>
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <div class="portfolio-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
-                        Loja Moda Style
+                    <div class="portfolio-image">
+                        [Imagem do Projeto]
                     </div>
                     <div class="portfolio-content">
-                        <h3>Loja Moda Style</h3>
-                        <p>E-commerce integrado com estoque e múltiplas formas de pagamento</p>
-                        <span class="portfolio-tag">E-commerce</span>
+                        <h3>Nome do Projeto</h3>
+                        <p>Descrição breve do projeto e resultados alcançados</p>
+                        <span class="portfolio-tag">Categoria</span>
                     </div>
                 </div>
             </div>
@@ -683,35 +766,35 @@
         <div class="container">
             <div class="section-header">
                 <h2>Por que escolher a Goss Designer?</h2>
-                <p>Números que comprovam nossa excelência e comprometimento</p>
+                <p>Compromisso com qualidade e resultados em cada projeto</p>
             </div>
             <div class="features-grid">
                 <div class="feature-item">
-                    <span class="feature-number">50+</span>
-                    <h3>Projetos Entregues</h3>
-                    <p>Clientes atendidos com sucesso</p>
+                    <div class="feature-icon">✨</div>
+                    <h3>Design Moderno</h3>
+                    <p>Visual atual e profissional</p>
                 </div>
                 <div class="feature-item">
-                    <span class="feature-number">5+</span>
-                    <h3>Anos de Experiência</h3>
-                    <p>No mercado digital</p>
+                    <div class="feature-icon">🚀</div>
+                    <h3>Entrega Rápida</h3>
+                    <p>Prazos cumpridos sempre</p>
                 </div>
                 <div class="feature-item">
-                    <span class="feature-number">100%</span>
-                    <h3>Satisfação</h3>
-                    <p>Dos nossos clientes</p>
+                    <div class="feature-icon">💬</div>
+                    <h3>Suporte Dedicado</h3>
+                    <p>Atendimento personalizado</p>
                 </div>
                 <div class="feature-item">
-                    <span class="feature-number">24/7</span>
-                    <h3>Suporte</h3>
-                    <p>Sempre que precisar</p>
+                    <div class="feature-icon">🎯</div>
+                    <h3>Foco em Resultados</h3>
+                    <p>Sites que convertem</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contato -->
-    <section class="contact" id="contato">
+    <section id="contato">
         <div class="container">
             <div class="contact-wrapper">
                 <div class="contact-info">
@@ -720,23 +803,23 @@
                     
                     <div class="contact-details">
                         <div class="contact-item">
-                            <div class="contact-icon">📧</div>
+                            <div class="contact-icon"></div>
                             <div>
-                                <strong>Email</strong><br>
-                                <small>contato@gossdesigner.com</small>
+                                <strong>Email</strong>
+                                <small>seu@email.com</small>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">📱</div>
                             <div>
-                                <strong>WhatsApp</strong><br>
+                                <strong>WhatsApp</strong>
                                 <small>(00) 00000-0000</small>
                             </div>
                         </div>
                         <div class="contact-item">
-                            <div class="contact-icon">🕐</div>
+                            <div class="contact-icon"></div>
                             <div>
-                                <strong>Atendimento</strong><br>
+                                <strong>Atendimento</strong>
                                 <small>Seg - Sex: 9h às 18h</small>
                             </div>
                         </div>
