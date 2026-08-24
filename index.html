@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goss Designer - Portfólio Profissional</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Tahoma, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #e8e6e1 0%, #d4d0c8 100%);
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Background com overlay */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23f5f5f5" width="1200" height="800"/><g fill="%23ddd"><rect x="100" y="100" width="400" height="300" opacity="0.3"/><rect x="700" y="200" width="350" height="250" opacity="0.2"/></g></svg>');
+            background-size: cover;
+            opacity: 0.4;
+            z-index: -1;
+        }
+
+        /* Barra Superior */
+        .top-bar {
+            background: linear-gradient(to bottom, #ffffff 0%, #e0e0e0 50%, #c0c0c0 100%);
+            border-bottom: 2px solid #808080;
+            padding: 12px 30px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .top-bar button {
+            background: linear-gradient(to bottom, #f0f0f0, #d0d0d0);
+            border: 2px solid #fff;
+            border-right-color: #404040;
+            border-bottom-color: #404040;
+            padding: 8px 24px;
+            font-family: Tahoma, sans-serif;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: all 0.1s;
+        }
+
+        .top-bar button:hover {
+            background: linear-gradient(to bottom, #fff, #e0e0e0);
+        }
+
+        .top-bar button:active {
+            border: 2px solid #404040;
+            border-right-color: #fff;
+            border-bottom-color: #fff;
+        }
+
+        /* Área de Ícones */
+        .desktop {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 80px);
+            gap: 25px;
+            max-width: 600px;
+        }
+
+        .icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px;
+            border: 1px solid transparent;
+            border-radius: 3px;
+            transition: all 0.2s;
+        }
+
+        .icon:hover {
+            background: rgba(0, 100, 200, 0.1);
+            border: 1px dotted rgba(0, 100, 200, 0.3);
+        }
+
+        .icon.selected {
+            background: rgba(0, 100, 200, 0.2);
+            border: 1px dotted #0064c8;
+        }
+
+        .icon-img {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 5px;
+            image-rendering: pixelated;
+        }
+
+        .icon-label {
+            font-size: 11px;
+            text-align: center;
+            color: #000;
+            text-shadow: none;
+            word-wrap: break-word;
+            max-width: 75px;
+        }
+
+        /* Janela */
+        .window {
+            position: absolute;
+            top: 120px;
+            right: 50px;
+            width: 520px;
+            background: #c0c0c0;
+            border: 2px solid #fff;
+            border-right-color: #404040;
+            border-bottom-color: #404040;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .window-title-bar {
+            background: linear-gradient(to right, #000080, #1084d0);
+            color: white;
+            padding: 4px 8px;
+            font-weight: bold;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 2px;
+        }
+
+        .window-btn {
+            width: 20px;
+            height: 18px;
+            background: #c0c0c0;
+            border: 1px solid #fff;
+            border-right-color: #404040;
+            border-bottom-color: #404040;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 12px;
+            line-height: 1;
+        }
+
+        .window-btn:hover {
+            background: #d0d0d0;
+        }
+
+        .window-content {
+            padding: 15px;
+            background: #c0c0c0;
+            border: 2px solid #808080;
+            border-top: none;
+            margin: 2px;
+            min-height: 350px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .project-card {
+            background: #fff;
+            border: 1px solid #808080;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            background: #f0f0f0;
+            margin-bottom: 8px;
+        }
+
+        .project-card h3 {
+            font-size: 12px;
+            color: #000;
+            margin-bottom: 5px;
+        }
+
+        .project-card p {
+            font-size: 10px;
+            color: #666;
+        }
+
+        /* Barra de Tarefas */
+        .taskbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: linear-gradient(to bottom, #4a90d9 0%, #2e6eb8 100%);
+            border-top: 2px solid #6ba8e0;
+            display: flex;
+            align-items: center;
+            padding: 0 5px;
+            gap: 5px;
+        }
+
+        .start-button {
+            background: linear-gradient(to bottom, #3da35a 0%, #2e8b47 100%);
+            border: 2px solid #fff;
+            border-right-color: #1a5c2e;
+            border-bottom-color: #1a5c2e;
+            color: white;
+            padding: 5px 15px;
+            font-weight: bold;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            height: 32px;
+        }
+
+        .start-button:hover {
+            background: linear-gradient(to bottom, #4fc96e 0%, #3da35a 100%);
+        }
+
+        .taskbar-divider {
+            width: 2px;
+            height: 28px;
+            background: rgba(255,255,255,0.3);
+            margin: 0 5px;
+        }
+
+        .taskbar-time {
+            margin-left: auto;
+            background: rgba(0,0,0,0.2);
+            padding: 5px 12px;
+            color: white;
+            font-size: 12px;
+            border-radius: 2px;
+        }
+
+        /* Responsivo */
+        @media (max-width: 900px) {
+            .window {
+                position: relative;
+                top: 0;
+                right: 0;
+                width: 100%;
+                margin: 20px;
+            }
+
+            .desktop {
+                grid-template-columns: repeat(4, 80px);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .top-bar {
+                flex-wrap: wrap;
+                gap: 10px;
+                padding: 10px;
+            }
+
+            .desktop {
+                grid-template-columns: repeat(3, 70px);
+                gap: 15px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .window {
+                margin: 10px;
+                width: calc(100% - 20px);
+            }
+        }
+
+        /* Scrollbar estilo Windows */
+        ::-webkit-scrollbar {
+            width: 16px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f0f0f0;
+            border-left: 1px solid #c0c0c0;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to right, #c0c0c0, #a0a0a0);
+            border: 1px solid #fff;
+            border-right-color: #404040;
+            border-bottom-color: #404040;
+        }
+
+        ::-webkit-scrollbar-button {
+            background: #c0c0c0;
+            height: 16px;
+            border: 1px solid #fff;
+            border-right-color: #404040;
+            border-bottom-color: #404040;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra Superior -->
+    <nav class="top-bar">
+        <button onclick="scrollToSection('home')">Home</button>
+        <button onclick="scrollToSection('sobre')">Sobre</button>
+        <button onclick="scrollToSection('contato')">Contato</button>
+        <button onclick="scrollToSection('orcamento')" style="background: linear-gradient(to bottom, #fffacd, #f0e68c); font-weight: bold;">Orçamento</button>
+    </nav>
+
+    <!-- Área de Ícones -->
+    <div class="desktop">
+        <div class="icon" onclick="openWindow()">
+            <div class="icon-img" style="background: linear-gradient(135deg, #0066cc 0%, #0099ff 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 24px;">e</div>
+            <span class="icon-label">Explorar</span>
+        </div>
+
+        <div class="icon" onclick="openWindow()">
+            <div class="icon-img" style="background: linear-gradient(to bottom, #6bb6ff 0%, #0066cc 100%); clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 85%, 0 100%);"></div>
+            <span class="icon-label">Projetos</span>
+        </div>
+
+        <div class="icon">
+            <div class="icon-img" style="background: transparent; border: 3px solid #666; border-radius: 50%; position: relative;">
+                <div style="position: absolute; width: 2px; height: 12px; background: #666; bottom: 2px; right: 2px; transform: rotate(45deg);"></div>
+            </div>
+            <span class="icon-label">Buscar</span>
+        </div>
+
+        <div class="icon">
+            <div class="icon-img" style="background: linear-gradient(135deg, #ff9933 0%, #ffcc00 50%, #3399ff 100%); border-radius: 3px;"></div>
+            <span class="icon-label">Restaurante.jpg</span>
+        </div>
+
+        <div class="icon">
+            <div class="icon-img" style="background: linear-gradient(135deg, #00cc99 0%, #33ccff 100%); border-radius: 3px;"></div>
+            <span class="icon-label">Clinica.jpg</span>
+        </div>
+
+        <div class="icon">
+            <div class="icon-img" style="background: linear-gradient(135deg, #ff6699 0%, #ff99cc 100%); border-radius: 3px;"></div>
+            <span class="icon-label">Loja.jpg</span>
+        </div>
+
+        <div class="icon">
+            <div class="icon-img" style="background: linear-gradient(to bottom, #e0e0e0 0%, #a0a0a0 100%); border: 2px solid #666; border-radius: 3px;"></div>
+            <span class="icon-label">Meu Computador</span>
+        </div>
+
+        <div class="icon">
+            <div class="icon-img" style="background: linear-gradient(to bottom, #66cc66 0%, #339933 100%); border-radius: 3px; position: relative;">
+                <div style="position: absolute; top: -3px; right: 5px; width: 12px; height: 4px; background: #333;"></div>
+            </div>
+            <span class="icon-label">Lixeira</span>
+        </div>
+    </div>
+
+    <!-- Janela de Projetos -->
+    <div class="window" id="projectsWindow">
+        <div class="window-title-bar">
+            <span>Projetos - Goss Designer</span>
+            <div class="window-controls">
+                <div class="window-btn">_</div>
+                <div class="window-btn">□</div>
+                <div class="window-btn" style="background: #c04040;" onclick="closeWindow()">×</div>
+            </div>
+        </div>
+        <div class="window-content">
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div style="background: linear-gradient(135deg, #ff9933, #ffcc00); height: 120px; margin-bottom: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">RESTAURANTE</div>
+                    <h3>Sabor & Arte</h3>
+                    <p>Site para restaurante</p>
+                </div>
+                <div class="project-card">
+                    <div style="background: linear-gradient(135deg, #00cc99, #33ccff); height: 120px; margin-bottom: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">CLÍNICA</div>
+                    <h3>Vida Saudável</h3>
+                    <p>Site para clínica médica</p>
+                </div>
+                <div class="project-card">
+                    <div style="background: linear-gradient(135deg, #ff6699, #ff99cc); height: 120px; margin-bottom: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">LOJA</div>
+                    <h3>Moda Style</h3>
+                    <p>E-commerce de roupas</p>
+                </div>
+            </div>
+            <div style="margin-top: 20px; padding: 15px; background: #fff; border: 1px solid #808080; text-align: center;">
+                <p style="font-size: 13px; margin-bottom: 10px;"><strong>Especialista em sites para:</strong></p>
+                <p style="font-size: 12px; color: #666;">🍽️ Restaurantes | 🏥 Clínicas | ️ Lojas | 🏢 Empresas</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Barra de Tarefas -->
+    <div class="taskbar">
+        <button class="start-button">
+            <span>⊞</span>
+            <span>Iniciar</span>
+        </button>
+        <div class="taskbar-divider"></div>
+        <div style="background: rgba(255,255,255,0.2); padding: 5px 15px; color: white; font-size: 12px; border: 1px solid rgba(255,255,255,0.3);">
+            Projetos - Goss Designer
+        </div>
+        <div class="taskbar-time" id="clock">14:32</div>
+    </div>
+
+    <script>
+        // Relógio
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('clock').textContent = `${hours}:${minutes}`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Abrir/Fechar Janela
+        function openWindow() {
+            document.getElementById('projectsWindow').style.display = 'block';
+        }
+
+        function closeWindow() {
+            document.getElementById('projectsWindow').style.display = 'none';
+        }
+
+        // Navegação suave
+        function scrollToSection(section) {
+            alert(`Navegando para: ${section}\nEm breve esta seção estará disponível!`);
+        }
+
+        // Selecionar ícones
+        document.querySelectorAll('.icon').forEach(icon => {
+            icon.addEventListener('click', function() {
+                document.querySelectorAll('.icon').forEach(i => i.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+
+        // Drag da janela (simplificado)
+        let isDragging = false;
+        let currentX;
+        let currentY;
+        let initialX;
+        let initialY;
+        let xOffset = 0;
+        let yOffset = 0;
+
+        const windowEl = document.getElementById('projectsWindow');
+        const titleBar = document.querySelector('.window-title-bar');
+
+        titleBar.addEventListener('mousedown', dragStart);
+        document.addEventListener('mouseup', dragEnd);
+        document.addEventListener('mousemove', drag);
+
+        function dragStart(e) {
+            initialX = e.clientX - xOffset;
+            initialY = e.clientY - yOffset;
+            if (e.target === titleBar || e.target.parentElement === titleBar) {
+                isDragging = true;
+            }
+        }
+
+        function dragEnd(e) {
+            initialX = currentX;
+            initialY = currentY;
+            isDragging = false;
+        }
+
+        function drag(e) {
+            if (isDragging) {
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+                xOffset = currentX;
+                yOffset = currentY;
+
+                windowEl.style.transform = `translate(${currentX}px, ${currentY}px)`;
+            }
+        }
+    </script>
+</body>
+</html>
