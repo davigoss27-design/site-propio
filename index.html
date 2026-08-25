@@ -406,22 +406,28 @@
         }
 
         /* Contato */
+        .contact-section {
+            text-align: center;
+        }
+
         .contact-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
         }
 
         .contact-info h3 {
             font-size: 1.75rem;
             color: var(--text-primary);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             font-weight: 800;
         }
 
-        .contact-info p {
+        .contact-info > p {
             color: var(--text-secondary);
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             line-height: 1.7;
         }
 
@@ -429,6 +435,7 @@
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
+            align-items: center;
             margin-bottom: 2.5rem;
         }
 
@@ -436,29 +443,41 @@
             display: flex;
             align-items: center;
             gap: 1rem;
+            width: 100%;
+            max-width: 400px;
+            background: var(--bg-card);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
         }
 
         .contact-icon {
             width: 50px;
             height: 50px;
-            background: var(--bg-card);
+            background: rgba(59, 130, 246, 0.1);
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--primary);
             font-size: 1.25rem;
-            border: 1px solid var(--border);
+            flex-shrink: 0;
         }
 
-        .contact-item strong {
+        .contact-item-content {
+            text-align: left;
+        }
+
+        .contact-item-content strong {
             color: var(--text-primary);
             display: block;
             margin-bottom: 0.2rem;
+            font-size: 0.95rem;
         }
 
-        .contact-item small {
+        .contact-item-content small {
             color: var(--text-secondary);
+            font-size: 0.9rem;
         }
 
         /* Área do WhatsApp */
@@ -471,11 +490,16 @@
             align-items: center;
             gap: 1.5rem;
             transition: all 0.3s;
+            text-decoration: none;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
         }
 
         .whatsapp-area:hover {
             border-color: var(--whatsapp);
             background: linear-gradient(135deg, rgba(37, 211, 102, 0.15), rgba(37, 211, 102, 0.08));
+            transform: translateY(-3px);
         }
 
         .whatsapp-icon-large {
@@ -490,6 +514,10 @@
             flex-shrink: 0;
         }
 
+        .whatsapp-content {
+            text-align: left;
+        }
+
         .whatsapp-content h4 {
             color: var(--text-primary);
             font-size: 1.2rem;
@@ -502,60 +530,12 @@
             margin-bottom: 0;
         }
 
-        .btn-whatsapp {
+        .whatsapp-link-text {
             display: inline-block;
-            margin-top: 1rem;
+            margin-top: 0.5rem;
             color: var(--whatsapp);
-            text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
-            transition: opacity 0.3s;
-        }
-
-        .btn-whatsapp:hover {
-            opacity: 0.8;
-        }
-
-        .contact-form {
-            background: var(--bg-card);
-            padding: 2.5rem;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.9rem 1rem;
-            background: var(--bg-dark);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 1rem;
-            color: var(--text-primary);
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
+            font-size: 0.95rem;
         }
 
         /* Footer */
@@ -593,7 +573,6 @@
             .impact-stat { font-size: 5rem; }
             
             .features-grid { grid-template-columns: repeat(2, 1fr); }
-            .contact-wrapper { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 640px) {
@@ -602,7 +581,15 @@
             .features-grid { grid-template-columns: 1fr; }
             section { padding: 4rem 1.5rem; }
             .section-header h2 { font-size: 2rem; }
-            .whatsapp-area { flex-direction: column; text-align: center; }
+            
+            .whatsapp-area { 
+                flex-direction: column; 
+                text-align: center; 
+                padding: 1.5rem;
+            }
+            .whatsapp-content { text-align: center; }
+            .contact-item { flex-direction: column; text-align: center; }
+            .contact-item-content { text-align: center; }
         }
     </style>
 </head>
@@ -692,7 +679,7 @@
                 </div>
                 <div class="impact-text">
                     <h3>Seja visto por quem está procurando o seu serviço</h3>
-                    <p>Estabelecimentos com um site profissional são <strong>muito mais vistos e escolhidos</strong> pela concorrência que não possui presença digital.</p>
+                    <p>Estabelecimentos com um site profissional são <strong>muito mais vistos e escolhidos</strong> que a concorrência que não possui presença digital.</p>
                     <p>Não basta apenas estar na internet. <strong>O site vai ter a cara do seu comércio</strong>, transmitindo a confiança e o profissionalismo que o seu cliente espera antes mesmo de pisar na sua porta.</p>
                 </div>
             </div>
@@ -723,7 +710,7 @@
                     <p>Atendimento personalizado</p>
                 </div>
                 <div class="feature-item">
-                    <div class="feature-icon"></div>
+                    <div class="feature-icon">🤝</div>
                     <h3>Parceria Real</h3>
                     <p>Seu sucesso é o nosso</p>
                 </div>
@@ -732,60 +719,40 @@
     </section>
 
     <!-- Contato -->
-    <section id="contato">
+    <section class="contact-section" id="contato">
         <div class="container">
+            <div class="section-header">
+                <h2>Vamos conversar</h2>
+                <p>Está pronto para levar seu negócio para o próximo nível? Entre em contato e vamos criar juntos um site que vai impressionar seus clientes.</p>
+            </div>
+            
             <div class="contact-wrapper">
-                <div class="contact-info">
-                    <h3>Vamos conversar sobre seu projeto</h3>
-                    <p>Está pronto para levar seu negócio para o próximo nível? Entre em contato e vamos criar juntos um site que vai impressionar seus clientes.</p>
-                    
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">📧</div>
-                            <div>
-                                <strong>Email</strong>
-                                <small>contato@gossdesigner.com</small>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">🕐</div>
-                            <div>
-                                <strong>Atendimento</strong>
-                                <small>Seg - Sex: 9h às 18h</small>
-                            </div>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-item-content">
+                            <strong>Email</strong>
+                            <small>davigoss27@gmail.com</small>
                         </div>
                     </div>
-
-                    <!-- Área do WhatsApp (Não funcional) -->
-                    <div class="whatsapp-area">
-                        <div class="whatsapp-icon-large">💬</div>
-                        <div class="whatsapp-content">
-                            <h4>Fale diretamente pelo WhatsApp</h4>
-                            <p>Resposta rápida para tirar suas dúvidas.</p>
-                            <a href="javascript:void(0)" class="btn-whatsapp" onclick="alert('Funcionalidade de WhatsApp em breve!')">Iniciar conversa →</a>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕐</div>
+                        <div class="contact-item-content">
+                            <strong>Atendimento</strong>
+                            <small>Seg - Sex: 9h às 18h</small>
                         </div>
                     </div>
                 </div>
 
-                <form class="contact-form" onsubmit="event.preventDefault(); alert('Formulário em desenvolvimento!');">
-                    <div class="form-group">
-                        <label for="nome">Nome completo</label>
-                        <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+                <!-- Área do WhatsApp (Funcional) -->
+                <a href="https://wa.me/5541995355120" target="_blank" class="whatsapp-area">
+                    <div class="whatsapp-icon-large">💬</div>
+                    <div class="whatsapp-content">
+                        <h4>Fale diretamente pelo WhatsApp</h4>
+                        <p>Resposta rápida para tirar suas dúvidas e solicitar seu orçamento.</p>
+                        <span class="whatsapp-link-text">Iniciar conversa →</span>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="seu@email.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="telefone">Telefone</label>
-                        <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000">
-                    </div>
-                    <div class="form-group">
-                        <label for="mensagem">Mensagem</label>
-                        <textarea id="mensagem" name="mensagem" placeholder="Conte-nos sobre seu estabelecimento..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn-primary" style="width: 100%;">Enviar Mensagem</button>
-                </form>
+                </a>
             </div>
         </div>
     </section>
@@ -799,8 +766,10 @@
         // Menu Mobile
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            if(navLinks.style.display === 'flex') {
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
                 navLinks.style.flexDirection = 'column';
                 navLinks.style.position = 'absolute';
                 navLinks.style.top = '70px';
@@ -809,6 +778,7 @@
                 navLinks.style.background = 'var(--bg-dark)';
                 navLinks.style.padding = '2rem';
                 navLinks.style.borderBottom = '1px solid var(--border)';
+                navLinks.style.gap = '1.5rem';
             }
         }
 
@@ -816,7 +786,7 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
-                if (href !== '#' && href !== 'javascript:void(0)') {
+                if (href !== '#' && !href.includes('wa.me')) {
                     e.preventDefault();
                     const target = document.querySelector(href);
                     if (target) {
@@ -841,7 +811,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.service-card, .feature-item, .impact-text, .impact-stat').forEach(el => {
+        document.querySelectorAll('.service-card, .feature-item, .impact-text, .impact-stat, .contact-item, .whatsapp-area').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
